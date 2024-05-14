@@ -10170,9 +10170,11 @@ class Slack {
     static generatePayload(jobName, status, mention, mentionCondition, commit) {
         const blockStatus = Block.status[status];
         const tmpText = `${jobName} ${blockStatus.result}`;
-        const text = mention && Slack.isMention(mentionCondition, status)
-            ? `<!${mention}> ${tmpText}`
-            : tmpText;
+        const text = !(mention && Slack.isMention(mentionCondition, status))
+            ? tmpText
+            : mention.startsWith('@')
+                ? `<${mention}> ${tmpText}`
+                : `<!${mention}> ${tmpText}`;
         const baseBlock = {
             type: 'section',
             fields: Block.getBaseField()
