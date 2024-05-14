@@ -50,7 +50,7 @@ You can customize the following parameters:
 |type|required|N/A|The result of GitHub Actions job<br>This parameter value must contain the following word:<br>- `success`<br>- `failure`<br>- `cancelled`<br>We recommend using ${{ job.status }}|
 |job_name|required|N/A|Means slack notification title|
 |url|required|N/A|Slack Incoming Webhooks URL<br>Please specify this key or SLACK_WEBHOOK environment variable<br>※SLACK_WEBHOOK will be deprecated|
-|mention|optional|N/A|Slack message mention|
+|mention|optional|N/A|Slack message mention.<br>Supports the following types:<br>- User : `@USER_ID`<br>- Group : `GROUP_ID`<br>- Special : `here` or `channel` or `everyone`|
 |mention_if|optional|N/A|The condition to mention<br>This parameter can contain the following word:<br>- `success`<br>- `failure`<br>- `cancelled`<br>- `always`|
 |icon_emoji|optional|Use Slack Incoming Webhook configuration|Slack icon|
 |username|optional|Use Slack Incoming Webhook configuration|Slack username|
